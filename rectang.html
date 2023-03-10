@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rectang</title>
+</head>
+<body>
+<canvas id="myCanvas" width="720" height="720" style="border: 1px solid #d3d3d3;"></canvas>
+<p id="display"></p>
+<script>
+    let a = +prompt('nhap toa do a', '');
+    let b = +prompt('nhap toa do b', '');
+    let html = '';
+
+    function Rectang(x, y) {
+        this.x = x;
+        this.y = y;
+        this.getArea = function () {
+            return x*y;
+        }
+        this.getPalimeter = function () {
+         return   (x+y)*2;
+        }
+    }
+
+    function getRandomColor() {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        return "rgb(" + red + "," + blue + ',' + green + ')';
+
+    }
+
+    function CreateRectang(x, y) {
+        var ctx = document.getElementById('myCanvas').getContext("2d");
+        ctx.fillRect(0, 0, x, y);
+        ctx.fillStyle = getRandomColor();
+    }
+
+    let rectang1 = new Rectang(a,b);
+    html += " Area is: " + rectang1.getArea() + '<br>';
+    html += "Palimeter is: " + rectang1.getPalimeter()+ '<br>';
+    document.getElementById('display').innerHTML=html;
+    CreateRectang(a,b)
+
+
+
+
+</script>
+</body>
+</html>
